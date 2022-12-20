@@ -33,9 +33,11 @@ export const getoneplayer=async(req,res)=>{
 }
 //update 
 export const update=async(req,res)=>{
-    try {const playersnum=req.body.Numbers_of_Players
+    try {const playersnum =req.body.Numbers_of_Players
         const id =req.params.id
-        const player=await footballmodel.update(req.body,{where:{id:id}});
+        const player=await footballmodel.update(req.body,
+            {where:{id:id &&playersnum >=22 &&playersnum <=26 } } 
+            );
         if ( player[0] ===0){
             res.send("Nothing changed due to technical error")
             
